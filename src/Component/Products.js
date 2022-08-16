@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import axios from 'axios';
-import {setdata} from "../Redux/Actions/Actions"
+import {setdata , fetchdata} from "../Redux/Actions/Actions"
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from "react-router-dom";
 import "./style.css"
@@ -8,9 +8,8 @@ const Product = () => {
   const dispatch = useDispatch()
   const data = useSelector((state)=>state.alldata)
   useEffect(()=>{
-    axios.get("https://fakestoreapi.com/products").then((res)=>{
-      dispatch(setdata(res.data))
-    })
+    
+      dispatch(fetchdata())
   },[])
   return (
     <div className='container'>

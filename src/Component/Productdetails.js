@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import {seleteddata} from "../Redux/Actions/Actions";
+import {seleteddata,selectdata} from "../Redux/Actions/Actions";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import {remove_seleteditem} from "../Redux/Actions/Actions"
@@ -10,9 +10,7 @@ const Productdetails = () => {
     const {id} = useParams()
     console.log(product)
     useEffect(()=>{
-        axios.get(`https://fakestoreapi.com/products/${id}`).then((res)=>{
-            dispatch(seleteddata(res.data))
-        })
+            dispatch(selectdata(id))
         return ()=> dispatch(remove_seleteditem())
       },[])
   return (
